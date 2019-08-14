@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "NODE_ENV=development nodemon src --exec babel-node",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "author": "Godfrey Ejeh",
   "license": "ISC",

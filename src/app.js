@@ -37,7 +37,7 @@ app.use(
       host: "localhost",
       port: 6379,
       client: redisClient,
-      ttl: 200
+      ttl: 1000
     })
   })
 );

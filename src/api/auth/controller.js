@@ -190,7 +190,7 @@ export async function emailLogin(req, res) {
               }
             },
             jwtSecret,
-            { expiresIn: 3600 },
+            { expiresIn: 3000 },
             (err, token) => {
               if (err) reject(err);
               resolve(token);

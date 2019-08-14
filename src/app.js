@@ -79,8 +79,7 @@ mongoose.set("useCreateIndex", true);
 
 // define a simple route
 app.get("/", (req, res) => {
-  console.log(req.session);
-  res.json({ message: "Welcome the English premier fixtures." });
+  res.json({ message: "Welcome to Mock Premier ixtures." });
 });
 
 // modify request object
@@ -108,11 +107,6 @@ app.use((error, req, res, next) => {
     }
   });
   next();
-});
-
-// listen for requests
-app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
 });
 
 export default app;

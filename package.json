@@ -4,8 +4,9 @@
   "description": "mock premier leaque fixtures",
   "main": "index.js",
   "scripts": {
-    "server": "NODE_ENV=development nodemon src --exec babel-node",
-    "test": "jest --watch"
+    "server": "nodemon server.js --exec babel-node",
+    "serve": "NODE_ENV=development nodemon src --exec babel-node",
+    "test": "jest  --watchAll"
   },
   "author": "Godfrey Ejeh",
   "license": "ISC",

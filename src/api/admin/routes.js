@@ -4,12 +4,6 @@ import { isValidAdmin } from "../auth/controller";
 
 const router = express.Router();
 
-const students = ["Elie", "Matt", "Joel", "Michael"];
-
-router.get("/", (req, res) => {
-  return res.json(students);
-});
-
 /**
  * @api {get} /admins/:adminId Retrieve admin
  * @apiName RetrieveAdmin

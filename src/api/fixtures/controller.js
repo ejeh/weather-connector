@@ -2,7 +2,7 @@ import Fixtures, { ObjectId } from "../../api/fixtures/model";
 import { success, fail, notFound } from "../../services/responses";
 import esClient from "../../services/elasticsearch";
 
-// Find searched Products
+// Find searched Fixtures
 export async function search(req, res) {
   const { q } = req.query || {};
 
@@ -29,7 +29,9 @@ export async function search(req, res) {
       "goalsHomeTeam",
       "goalsAwayTeam",
       "score",
-      "status"
+      "status",
+      "round",
+      "referee"
     ]
   };
   search("fixtures", body)
@@ -47,6 +49,7 @@ export async function search(req, res) {
     );
 }
 
+// Create  a fixture
 export function create(req, res) {
   if (req.session.key) {
     const data = req.body || {};
@@ -104,12 +107,6 @@ export function create(req, res) {
     if (data.goalsAwayTeam) newObject.goalsAwayTeam = data.goalsAwayTeam;
     if (data.round) newObject.round = data.round;
     if (data.statusShort) newObject.statusShort = data.statusShort;
-
-    newObject.score = {};
-    if (data.score.extratime) newObject.score.extratime = data.score.extratime;
-    if (data.score.penalty) newObject.score.penalty = data.score.penalty;
-    if (data.score.halftime) newObject.score.halftime = data.score.halftime;
-    if (data.score.fulltime) newObject.score.fulltime = data.score.fulltime;
 
     const record = new Fixtures(newObject);
 
@@ -257,7 +254,7 @@ export function findOne(req, res) {
   }
 }
 
-// Update a admin identified by the adminId in the request
+// Update a fixtures identified by the fixturesId in the request
 export async function update(req, res) {
   if (req.session.key) {
     const fixtureId = req.params.fixtureId || "";
@@ -271,8 +268,6 @@ export async function update(req, res) {
         422,
         `Only Admins are allowed to update this record not ${userType}`
       );
-
-    // Validate request
 
     const newObject = {};
     newObject.updatedBy = userId;

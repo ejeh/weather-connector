@@ -12,7 +12,7 @@ const router = express.Router();
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 user not found.
  */
-// router.get("/user/:userId", isValidUser, user.findOne);
+router.get("/user/:userId", isValidUser, user.findOne);
 
 /**
  * @api {get} /users Retrieve user
@@ -21,7 +21,7 @@ const router = express.Router();
  * @apiSuccess {Object[]} rows List of user.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-// router.get("/users", isValidUser, user.findAll);
+router.get("/users", isValidUser, user.findAll);
 
 /**
  * @api {put} /user Update user
@@ -41,7 +41,7 @@ const router = express.Router();
  * @apiError 401 master access only.
  */
 
-// router.put("/user", isValidUser, user.update);
+router.put("/user", isValidUser, user.update);
 
 /**
  * @api {delete} /user/:userId Delete user
@@ -53,6 +53,6 @@ const router = express.Router();
  * @apiError 404 user not found.
  * @apiError 401 master access only.
  */
-// router.delete("/user/:userId", isValidUser, admin.destroy);
+router.delete("/user/:userId", isValidUser, user.destroy);
 
 export default router;

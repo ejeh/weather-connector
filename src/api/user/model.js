@@ -9,7 +9,7 @@
 
 import mongoose, { Schema } from "mongoose";
 
-const AdminSchema = new Schema(
+const UserSchema = new Schema(
   {
     email: {
       type: String,
@@ -35,7 +35,7 @@ const AdminSchema = new Schema(
   }
 );
 
-AdminSchema.methods = {
+UserSchema.methods = {
   view(full) {
     const view = {
       // simple view
@@ -55,7 +55,7 @@ AdminSchema.methods = {
       : view;
   }
 };
-const User = mongoose.model("User", AdminSchema);
+const User = mongoose.model("User", UserSchema);
 
 export const { ObjectId } = mongoose.Types;
 export default User;

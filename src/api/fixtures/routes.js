@@ -30,7 +30,9 @@ router.get("/fixtures/pending/user", isValidUser, fixtures.pending);
  * @apiSuccess {Object[]} rows List of Fixtures.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.get("/fixtures", isValidAdmin, fixtures.findAll);
+router.get("/fixtures/admin", isValidAdmin, fixtures.findAll);
+
+router.get("/fixtures/user", isValidUser, fixtures.findAll);
 
 /**
  * @api {post} /fixtures Create fixture
@@ -54,7 +56,7 @@ router.post("/fixtures", isValidAdmin, fixtures.create);
  * @apiParam date fixture date
  * @apiParam venue fixture venue
  */
-router.put("/fixtures/:fixtureId", isValidAdmin, fixtures.update);
+router.put("/fixture/:fixtureId", isValidAdmin, fixtures.update);
 
 /**
  * @description admin has exclusive right to modify this fixture

@@ -19,7 +19,7 @@ const FixturesSchema = new Schema(
       es_indexed: true
     },
     event_timestamp: { type: Number },
-    firstHalfStart: { type: Number, es_indexed: true },
+    firstHalfStart: { type: String, es_indexed: true },
     round: { type: String, es_indexed: true },
     status: {
       type: String,
@@ -27,7 +27,7 @@ const FixturesSchema = new Schema(
       es_indexed: true,
       default: "pending"
     },
-    statusShort: { type: String, es_indexed: true },
+    statusShort: { type: String, default: null, es_indexed: true },
     venue: { type: String, es_indexed: true },
     referee: { type: String, es_indexed: true },
     homeTeam: {
@@ -43,8 +43,8 @@ const FixturesSchema = new Schema(
     goalsHomeTeam: { type: Number, default: 0, es_indexed: true },
     goalsAwayTeam: { type: Number, default: 0, es_indexed: true },
     score: {
-      halftime: { type: String, es_indexed: true },
-      fulltime: { type: String, es_indexed: true },
+      halftime: { type: String, default: 0, es_indexed: true },
+      fulltime: { type: String, default: 0, es_indexed: true },
       extratime: { type: String, default: null, es_indexed: true },
       penalty: { type: String, default: null, es_indexed: true }
     },

@@ -2,7 +2,7 @@ import Team, { ObjectId } from "../../api/team/model";
 import { success, fail, notFound } from "../../services/responses";
 import esClient from "../../services/elasticsearch";
 
-// Find searched Products
+// Find searched Teams
 export async function search(req, res) {
   const { q } = req.query || {};
 
@@ -52,6 +52,7 @@ export async function search(req, res) {
     );
 }
 
+// Create a team
 export function create(req, res) {
   if (req.session.key) {
     const data = req.body || {};
@@ -185,7 +186,7 @@ export function findOne(req, res) {
     return fail(res, 500, "Session timeout, please re-login");
   }
 }
-// Update a admin identified by the adminId in the request
+// Update a team identified by the adminId in the request
 export async function update(req, res) {
   if (req.sesssion.key) {
     const teamId = req.params.teamId || "";

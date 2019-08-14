@@ -30,7 +30,7 @@ export function findOne(req, res) {
         return fail(res, 500, `Error retrieving record.\r\n${err.message}`);
       });
   } else {
-    return fail(res, 500, "Session timeout, please re-login");
+    return fail(res, 401, "Session timeout, please re-login");
   }
 }
 
@@ -53,11 +53,11 @@ export function findAll(req, res) {
         fail(res, 500, `Error retrieving record(s).\r\n${err.message}`)
       );
   } else {
-    return fail(res, 500, "Session timeout, please re-login");
+    return fail(res, 401, "Session timeout, please re-login");
   }
 }
 
-// Update a admin identified by the productId in the request
+// Update a admin
 export async function update(req, res) {
   if (req.session.key) {
     const data = req.body || {};
@@ -112,7 +112,7 @@ export async function update(req, res) {
         )
       );
   } else {
-    return fail(res, 500, "Session timeout, please re-login");
+    return fail(res, 401, "Session timeout, please re-login");
   }
 }
 
@@ -134,7 +134,7 @@ export async function destroy(req, res) {
       return fail(
         res,
         422,
-        `Only Super Admin is allowed to delete this record not ${userType}`
+        `Only Admin is allowed to delete this record not ${userType}`
       );
     }
     return Admin.findByIdAndRemove(recordId)
@@ -157,6 +157,6 @@ export async function destroy(req, res) {
         );
       });
   } else {
-    return fail(res, 500, "Session timeout, please re-login");
+    return fail(res, 401, "Session timeout, please re-login");
   }
 }

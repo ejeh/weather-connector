@@ -13,7 +13,7 @@ export async function search(req, res) {
   };
   let body = {
     from: 0,
-    size: 3,
+    size: 5,
     query: {
       multi_match: {
         query: q,
@@ -188,7 +188,7 @@ export function findOne(req, res) {
 }
 // Update a team identified by the adminId in the request
 export async function update(req, res) {
-  if (req.sesssion.key) {
+  if (req.session.key) {
     const teamId = req.params.teamId || "";
     const data = req.body || {};
     const { userId, userType } = res.locals;

@@ -20,11 +20,15 @@ This is a project for the STERLING PRODUCT [interview task] backend
 
 4. Build and Serve App
 
-> npm run server
+> npm run start
 
 ## Routes
 
 In this project there are several routes (one public route and the others are protected routes) and are as follows:
+
+# Root Route
+
+- `GET http://localhost:3000/api/v1`
 
 ## Admin routes
 

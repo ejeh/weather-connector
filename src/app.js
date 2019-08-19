@@ -9,6 +9,7 @@ import path from "path";
 import session from "express-session";
 import redis from "redis";
 const redisClient = redis.createClient();
+// host: "redis"
 const redisStore = require("connect-redis")(session);
 
 // import routes
@@ -29,7 +30,7 @@ redisClient.on("error", err => {
 app.use(
   session({
     secret: "ThisIsHowYouUseRedisSessionStorage",
-    name: "_redisPractice",
+    name: "_redis",
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false }, // Note that the cookie-parser module is no longer needed
@@ -37,7 +38,7 @@ app.use(
       host: "localhost",
       port: 6379,
       client: redisClient,
-      ttl: 1000
+      ttl: 2000
     })
   })
 );
@@ -50,7 +51,6 @@ app.use(morgan("dev"));
 
 app.use(express.static(path.join(__dirname, "../public")));
 
-const PORT = process.env.BACKEND_PORT;
 const database = process.env.DB_HOST;
 
 // Configuring the database
@@ -79,7 +79,7 @@ mongoose.set("useCreateIndex", true);
 
 // define a simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Mock Premier ixtures." });
+  res.json({ message: "Welcome to Mock Premier Fixtures." });
 });
 
 // modify request object

@@ -22,6 +22,9 @@ This is a project for the STERLING PRODUCT [interview task] backend
 
 > npm run start
 
+5. Run docker
+   > docker-compose up
+
 ## Routes
 
 In this project there are several routes (one public route and the others are protected routes) and are as follows:

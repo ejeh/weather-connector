@@ -28,6 +28,7 @@ beforeAll(done => {
       password: "magickiss"
     })
     .end((err, res) => {
+      console.log(res.body);
       if (err) {
         console.log(err);
       }
@@ -39,7 +40,7 @@ beforeAll(done => {
       done();
     });
 });
-describe("GET /fixture", () => {
+describe("GET /fixtures", () => {
   // token not being sent - should respond with a 401
   it("It should respond with JSON", done => {
     return request(app)

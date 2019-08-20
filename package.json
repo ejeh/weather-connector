@@ -4,6 +4,9 @@
   "description": "mock premier leaque fixtures",
   "main": "index.js",
   "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "build": "babel src -s -D -d dist --presets env",
+    "deploy": "NODE_ENV=production babel-node index.js",
     "dev": "nodemon --exec babel-node",
     "start": "nodemon index.js --exec babel-node",
     "server": "NODE_ENV=development nodemon src --exec babel-node",

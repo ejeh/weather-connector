@@ -36,7 +36,6 @@ beforeAll(done => {
       password: "magickiss"
     })
     .end((err, res) => {
-      console.log(res.body);
       if (err) {
         console.log(err);
       }
@@ -66,7 +65,6 @@ describe("GET /admins", () => {
       .set("Authorization", `Bearer ${token}`)
       .set("Cookie", cookie)
       .then(response => {
-        console.log(response.body);
         expect(response.status).toBe(200);
         expect(response.type).toBe("application/json");
         done();

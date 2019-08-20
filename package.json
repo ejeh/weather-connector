@@ -7,11 +7,11 @@
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./src -s",
     "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && node ./build/index.js",
+    "start": "NODE_ENV=production npm run build && node ./build/index.js",
     "buil": "babel-node src -s -D -d dist --presets env",
     "deploy": "NODE_ENV=production babel-node index.js",
     "dev": "nodemon --exec babel-node",
-    "star": "nodemon index.js --exec babel-node",
+    "star": "nodemon ./src/index.js --exec babel-node",
     "server": "NODE_ENV=development nodemon src --exec babel-node",
     "test": "jest  --watchAll"
   },

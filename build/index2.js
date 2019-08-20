@@ -9,12 +9,6 @@ exports["default"] = void 0;
 
 var _app = _interopRequireDefault(require("./app"));
 
-var PORT = process.env.BACKEND_PORT; // listen for requests
-
-_app["default"].listen(PORT, function () {
-  console.log("Server is listening on port ".concat(PORT));
-});
-
 var _default = _app["default"];
 exports["default"] = _default;
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index2.js.map

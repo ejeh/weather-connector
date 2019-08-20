@@ -4,16 +4,16 @@
   "description": "mock premier leaque fixtures",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist && mkdir dist",
-    "build": "babel src -s -D -d dist --presets env",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/index.js",
+    "buil": "babel-node src -s -D -d dist --presets env",
     "deploy": "NODE_ENV=production babel-node index.js",
     "dev": "nodemon --exec babel-node",
-    "start": "nodemon index.js --exec babel-node",
+    "star": "nodemon index.js --exec babel-node",
     "server": "NODE_ENV=development nodemon src --exec babel-node",
     "test": "jest  --watchAll"
-  },
-  "jest": {
-    "testEnvironment": "node"
   },
   "author": "Godfrey Ejeh",
   "license": "ISC",
@@ -32,15 +32,22 @@
     "nodemon": "1.19.1",
     "redis": "^2.8.0",
     "simple-encryptor": "^3.0.0",
-    "sinon": "^7.4.1",
-    "supertest": "^4.0.2",
-    "wait-for-expect": "^1.3.0"
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.4.2",
     "jest": "^24.8.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "engines": {
+    "node": "10.15.0"
   }
 }

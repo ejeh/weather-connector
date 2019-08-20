@@ -60,7 +60,7 @@ describe("GET /admins", () => {
       });
   });
   //   token not being sent - should respond with a 401
-  test("It should require authorization", () => {
+  test("It should require authorization", done => {
     return request(app)
       .get("/api/v1/users")
       .set("Authorization", `Bearer ${token}`)
@@ -69,12 +69,13 @@ describe("GET /admins", () => {
         console.log(response.body);
         expect(response.status).toBe(200);
         expect(response.type).toBe("application/json");
+        done();
       });
   });
 
   test("It should return some properties", done => {
     return request(app)
-      .get("/api/v1/user/5d59c112d0a1f943fc8f1e62")
+      .get("/api/v1/user/5d5ae33cc385940596e173a0")
       .set("Authorization", `Bearer ${token}`)
       .set("Cookie", cookie)
       .then(response => {

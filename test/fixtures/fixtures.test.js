@@ -45,6 +45,7 @@ describe("GET /fixture", () => {
     return request(app)
       .get("/api/v1/fixtures/admin")
       .then(response => {
+        console.log(response.body);
         expect(response.statusCode).toBe(403);
         done();
       });
@@ -80,13 +81,13 @@ describe("GET /fixture", () => {
   });
   it("It should return some properties", done => {
     return request(app)
-      .get("/api/v1/fixture/5d5a6f7c89e4ce0ae60d425c")
+      .get("/api/v1/fixture/5d549c7d803a502f9aae5f6c")
       .set("Authorization", `Bearer ${token}`)
       .set("Cookie", cookie)
       .then(res => {
         expect(res.body.data).toHaveProperty(
           "awayTeam.team_name",
-          "AFC Bournemouth"
+          "Tottenham Hotspur"
         );
         expect(res.statusCode).toBe(200);
         done();
@@ -104,7 +105,7 @@ describe("GET /fixture", () => {
   });
   it("it should update a team", done => {
     return request(app)
-      .put("/api/v1/fixture/5d5a6f7c89e4ce0ae60d425c")
+      .put("/api/v1/fixture/5d549c7d803a502f9aae5f6c")
       .send({
         score: {
           halftime: "1-0",
@@ -113,10 +114,10 @@ describe("GET /fixture", () => {
           penalty: null
         },
         homeTeam: {
-          team_name: "Manchester United"
+          team_name: "Newcastle United"
         },
         awayTeam: {
-          team_name: "AFC Bournemouth"
+          team_name: "Tottenham Hotspur"
         }
       })
       .set("Authorization", `Bearer ${token}`)
@@ -128,7 +129,7 @@ describe("GET /fixture", () => {
   });
   it("it should require authorization", done => {
     return request(app)
-      .delete("/api/v1/fixture/5d527363779983082da61e5e")
+      .delete("/api/v1/fixture/5d549c7d803a502f9aae5f6c")
       .set("Cookie", cookie)
       .then(response => {
         expect(response.statusCode).toBe(403);

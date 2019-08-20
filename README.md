@@ -25,7 +25,7 @@ This is a project for the STERLING PRODUCT [interview task] backend
 5. Run docker
    > docker-compose up
 
-- `GET http://localhost:4000/api/v1`
+- `GET http://localhost:4000/`
 
 ## Routes
 
@@ -33,7 +33,7 @@ In this project there are several routes (one public route and the others are pr
 
 # Root route
 
-- `GET http://localhost:3000/api/v1`
+- `GET http://localhost:3000`
 
 ## Admin routes
 

@@ -7,7 +7,7 @@ services:
     environment:
       ELASTICSEARCH_HOST: "localhost:9200"
     ports:
-      - "4000:3000"
+      - "3000:3000"
     volumes:
       - /app/node_modules
       - .:/app

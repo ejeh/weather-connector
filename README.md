@@ -212,7 +212,7 @@ Delete a fixture with the specified fixtureId in the request
 
 # Protected Route
 
-To access this routes you must first login as an user
+To access this routes you must first login as a user
 
 Retrieve all completed fixtures
 

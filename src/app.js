@@ -8,8 +8,9 @@ import path from "path";
 
 import session from "express-session";
 import redis from "redis";
-const redisClient = redis.createClient();
-// host: "redis"
+const redisClient = redis.createClient({
+  host: "redis"
+});
 const redisStore = require("connect-redis")(session);
 
 // import routes

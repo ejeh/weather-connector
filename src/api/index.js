@@ -1,18 +1,9 @@
 import express from "express";
-
-import auth from "./auth";
-import adminRoute from "./admin";
-import userRoute from "./user";
-import teamRoute from "./team";
-import fixturesRoute from "./fixtures";
+import weatherRoute from "./weather";
 
 const router = express.Router();
 
 // Use Routes
-router.use(teamRoute);
-router.use(auth);
-router.use(adminRoute);
-router.use(userRoute);
-router.use(fixturesRoute);
+router.use(weatherRoute);
 
 export default router;

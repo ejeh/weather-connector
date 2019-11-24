@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/api/weather/index.js"],"names":["routes"],"mappings":";;;;;;;;;AAAA;;eAEeA,kB","sourcesContent":["import routes from \"./routes\";\n\nexport default routes;\n\n\n"],"file":"index.js"}

@@ -5,13 +5,7 @@ import morgan from "morgan";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import path from "path";
-
-import session from "express-session";
-import redis from "redis";
-const redisClient = redis.createClient({
-  host: "redis"
-});
-const redisStore = require("connect-redis")(session);
+import cors from "cors";
 
 // import routes
 import api from "./api";
@@ -19,30 +13,14 @@ import api from "./api";
 dotenv.config();
 
 const app = express();
-redisClient.on("error", err => {
-  console.log("Redis error: ", err);
-});
 
-// Start a session; we use Redis for the session store.
-// "secret" will be used to create the session ID hash (the cookie id and the redis key value)
-// "name" will show up as your cookie name in the browser
-// "cookie" is provided by default; you can add it to add additional personalized options
-// The "store" ttl is the expiration time for each Redis session ID, in seconds
-app.use(
-  session({
-    secret: "ThisIsHowYouUseRedisSessionStorage",
-    name: "_redis",
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false }, // Note that the cookie-parser module is no longer needed
-    store: new redisStore({
-      host: "localhost",
-      port: 6379,
-      client: redisClient,
-      ttl: 2000
-    })
-  })
-);
+const corsOptions = {
+  origin: "http://localhost:3000",
+
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 
 // app.use(cookieParser());
 // app.use(helmet());
@@ -52,47 +30,49 @@ app.use(morgan("dev"));
 
 app.use(express.static(path.join(__dirname, "../public")));
 
-const database = process.env.DB_HOST;
+// const database = process.env.DB_HOST;
 
-// Configuring the database
-mongoose.Promise = global.Promise;
+// // Configuring the database
+// mongoose.Promise = global.Promise;
 
-// Connecting to the database
-mongoose
-  .connect(database, {
-    useNewUrlParser: true,
-    reconnectTries: Number.MAX_SAFE_INTEGER,
-    reconnectInterval: 1000,
-    poolSize: 5,
-    socketTimeoutMS: 45000,
-    autoReconnect: true
-  })
-  .then(() => {
-    console.log("Successfully connected to the database!");
-  })
-  .catch(err => {
-    console.log(err, "Could not connect to the database. Exiting now...");
-    process.exit();
-  });
+// // Connecting to the database
+// mongoose
+//   .connect(database, {
+//     useNewUrlParser: true,
+//     reconnectTries: Number.MAX_SAFE_INTEGER,
+//     reconnectInterval: 1000,
+//     poolSize: 5,
+//     socketTimeoutMS: 45000,
+//     autoReconnect: true
+//   })
+//   .then(() => {
+//     console.log("Successfully connected to the database!");
+//   })
+//   .catch(err => {
+//     console.log(err, "Could not connect to the database. Exiting now...");
+//     process.exit();
+//   });
 
-mongoose.set("useFindAndModify", false);
-mongoose.set("useCreateIndex", true);
+// mongoose.set("useFindAndModify", false);
+// mongoose.set("useCreateIndex", true);
 
 // define a simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to Mock Premier Fixtures." });
-});
-
-// modify request object
-app.use((req, res, next) => {
-  res.locals.userId = 0.0;
-  res.locals.userType = "anonymous";
-  res.locals.role = "";
-  next();
+  res.json({ message: "Welcome to Mock Weather Forcast." });
 });
 
 // Use Routes
 app.use("/api/v1", api);
+
+// Serve as static assets if in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("client/bulid"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 app.use((req, res, next) => {
   const error = new Error("Not found!");
@@ -104,7 +84,7 @@ app.use((error, req, res, next) => {
   res.status(error.status || 500);
   res.json({
     error: {
-      message: `Mock premier league API says ${error.message}`
+      message: `Weather Forcast API says ${error.message}`
     }
   });
   next();

@@ -1,5 +1,5 @@
 {
-  "name": "premier-leaque",
+  "name": "weather",
   "version": "1.0.0",
   "description": "mock premier leaque fixtures",
   "main": "index.js",

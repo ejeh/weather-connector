@@ -9,6 +9,7 @@
     "client": "npm start --prefix client",
     "server": "nodemon ./src/index.js --exec babel-node",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "start": "NODE_ENV=production npm run build && node ./build/index.js",
     "build": "npm run clean && npm run build-babel",
     "test": "jest  --watchAll"
@@ -31,7 +32,6 @@
     "morgan": "^1.9.1",
     "nodemon": "1.19.1",
     "redis": "^2.8.0",
-    "request": "^2.88.0",
     "supertest": "^4.0.2"
   },
   "devDependencies": {

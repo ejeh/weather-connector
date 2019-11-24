@@ -12,7 +12,7 @@
     "start": "NODE_ENV=production npm run build && node ./build/index.js",
     "build": "npm run clean && npm run build-babel",
     "test": "jest  --watchAll",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NODE_ENV=production npm install --prefix client && npm run build --prefix client"
   },
   "author": "Godfrey Ejeh",
   "license": "ISC",

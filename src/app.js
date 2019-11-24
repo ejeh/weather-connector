@@ -57,9 +57,9 @@ app.use(express.static(path.join(__dirname, "../public")));
 // mongoose.set("useCreateIndex", true);
 
 // define a simple route
-app.get("/app", (req, res) => {
-  res.json({ message: "Welcome to Mock Weather Forcast." });
-});
+// app.get("/app", (req, res) => {
+//   res.json({ message: "Welcome to Mock Weather Forcast." });
+// });
 
 // Use Routes
 app.use("/api/v1", api);

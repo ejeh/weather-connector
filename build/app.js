@@ -66,12 +66,10 @@ app.use(_express["default"]["static"](_path["default"].join(__dirname, "../publi
 // mongoose.set("useFindAndModify", false);
 // mongoose.set("useCreateIndex", true);
 // define a simple route
-
-app.get("/app", function (req, res) {
-  res.json({
-    message: "Welcome to Mock Weather Forcast."
-  });
-}); // Use Routes
+// app.get("/app", (req, res) => {
+//   res.json({ message: "Welcome to Mock Weather Forcast." });
+// });
+// Use Routes
 
 app.use("/api/v1", _api["default"]); // Serve as static assets if in production
 

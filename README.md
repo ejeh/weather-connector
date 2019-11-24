@@ -3,6 +3,7 @@
 This is a project for the STERLING PRODUCT [interview task] backend
 
 - Authentication; this returns a signed JWT
+  // "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
 
 ## Usage
 

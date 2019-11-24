@@ -9,7 +9,7 @@ exports["default"] = void 0;
 
 var _app = _interopRequireDefault(require("./app"));
 
-var PORT = process.env.BACKEND_PORT || 3000; // listen for requests
+var PORT = process.env.PORT || 4000; // listen for requests
 
 _app["default"].listen(PORT, "0.0.0.0", function () {
   console.log("Server is listening on port ".concat(PORT));

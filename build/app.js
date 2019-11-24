@@ -66,16 +66,18 @@ app.use(_express["default"]["static"](_path["default"].join(__dirname, "../publi
 // mongoose.set("useFindAndModify", false);
 // mongoose.set("useCreateIndex", true);
 // define a simple route
-// app.get("/app", (req, res) => {
-//   res.json({ message: "Welcome to Mock Weather Forcast." });
-// });
-// Use Routes
+
+app.get("/app", function (req, res) {
+  res.json({
+    message: "Welcome to Mock Weather Forcast."
+  });
+}); // Use Routes
 
 app.use("/api/v1", _api["default"]); // Serve as static assets if in production
 
 if (process.env.NODE_ENV === "production") {
   // Set static folder
-  app.use(_express["default"]["static"]("client/bulid"));
+  app.use(_express["default"]["static"]("client/build"));
   app.get("*", function (req, res) {
     res.sendFile(_path["default"].resolve(__dirname, "client", "build", "index.html"));
   });

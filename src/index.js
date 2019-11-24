@@ -1,10 +1,9 @@
 import app from "./app";
 
 const PORT = process.env.BACKEND_PORT;
-const HOST = "0.0.0.0";
 
 // listen for requests
-app.listen(PORT, HOST, () => {
+app.listen(PORT, "localhost", () => {
   console.log(`Server is listening on port ${PORT}`);
 });
 
